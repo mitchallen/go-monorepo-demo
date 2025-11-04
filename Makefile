@@ -29,7 +29,7 @@ build: ## Build all applications
 coverage: ## Run tests with coverage reports
 	@./scripts/coverage.sh
 
-coverage-html: ## Generate and open HTML coverage report (usage: make coverage-html MODULE=alpha)
+coverage-html: ## View HTML coverage report (usage: make coverage-html MODULE=alpha)
 	@if [ -z "$(MODULE)" ]; then \
 		echo "Error: MODULE not specified"; \
 		echo "Usage: make coverage-html MODULE=<module-name>"; \
@@ -42,10 +42,7 @@ coverage-html: ## Generate and open HTML coverage report (usage: make coverage-h
 		echo "Run 'make coverage' first"; \
 		exit 1; \
 	fi
-	@echo "Generating HTML coverage report for $(MODULE)..."
-	@go tool cover -html=coverage/$(MODULE).out -o coverage/$(MODULE).html
-	@echo "Coverage report saved to: coverage/$(MODULE).html"
-	@echo "Open the file in your browser to view the report."
+	@go tool cover -html=coverage/$(MODULE).out
 
 clean: ## Clean build artifacts and coverage reports
 	@echo "Cleaning build artifacts..."
