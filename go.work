@@ -1,0 +1,9 @@
+go 1.21.13
+
+use (
+	./cmd/demo-app
+	./cmd/web-server
+	./pkg/alpha
+	./pkg/beta
+	./pkg/shared
+)

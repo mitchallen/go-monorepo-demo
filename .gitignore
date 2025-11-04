@@ -18,4 +18,10 @@
 # vendor/
 
 # Go workspace file
-go.work
+# Note: For demo repos, go.work is checked in to show the workspace setup
+# In production, you might want to gitignore go.work and provide go.work.example
+go.work.sum
+
+# Build artifacts
+bin/
+coverage/
