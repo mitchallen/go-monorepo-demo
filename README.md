@@ -3,7 +3,7 @@ go-monorepo-demo
 
 See article:
 
-* [How to Create and Use a Go Monorepo (Golang, Workspaces)](https://scriptable.com/how-to-create-and-use-a-go-monorepo/)
+* [How to Create and Use a Go Monorepo (Golang, Workspaces)](/how-to-create-and-use-a-go-monorepo.md)
 
 ## Usage
 
