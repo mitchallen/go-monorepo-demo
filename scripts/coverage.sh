@@ -6,10 +6,14 @@ echo "Running tests with coverage..."
 # Create coverage directory if it doesn't exist
 mkdir -p coverage
 
+# Get the project root directory
+PROJECT_ROOT=$(pwd)
+
 # Run tests for each module and collect coverage
 go list -f '{{.Dir}}' -m | while read dir; do
-    echo "Testing $dir..."
-    go test -C "$dir" -coverprofile=coverage/$(basename "$dir").out -covermode=atomic ./...
+    module_name=$(basename "$dir")
+    echo "Testing $module_name..."
+    (cd "$dir" && go test -coverprofile="$PROJECT_ROOT/coverage/$module_name.out" -covermode=atomic ./...)
 done
 
 echo ""

@@ -29,6 +29,21 @@ build: ## Build all applications
 coverage: ## Run tests with coverage reports
 	@./scripts/coverage.sh
 
+coverage-html: ## View HTML coverage report (usage: make coverage-html MODULE=alpha)
+	@if [ -z "$(MODULE)" ]; then \
+		echo "Error: MODULE not specified"; \
+		echo "Usage: make coverage-html MODULE=<module-name>"; \
+		echo "Available modules:"; \
+		ls -1 coverage/*.out 2>/dev/null | xargs -n1 basename | sed 's/.out//' | sed 's/^/  - /' || echo "  (run 'make coverage' first)"; \
+		exit 1; \
+	fi
+	@if [ ! -f "coverage/$(MODULE).out" ]; then \
+		echo "Error: coverage/$(MODULE).out not found"; \
+		echo "Run 'make coverage' first"; \
+		exit 1; \
+	fi
+	@go tool cover -html=coverage/$(MODULE).out
+
 clean: ## Clean build artifacts and coverage reports
 	@echo "Cleaning build artifacts..."
 	@rm -rf bin/
